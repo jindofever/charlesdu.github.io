@@ -11,9 +11,21 @@ var data;
 // Function to define innerHTML for HTML table
 function show(data) {
     // Loop to access all rows 
+    let tab = 
+        `<tr>
+          <th>Name</th>
+          <th>Ethnicity</th>
+          <th>State</th>
+         </tr>`;
+    
+    // Loop to access all rows 
     for (let r of data) {
-        
-    }
+        tab += `<tr> 
+    <td>${r['fields']['name']} </td>
+    <td>${r['fields']['ethnicity']}</td>    
+    <td>${r['fields']['state']}</td>  
+</tr>`;}
+    document.getElementById("therapists").innerHTML = tab;
 }
 
 // Defining async function
@@ -29,20 +41,3 @@ async function getapi(url) {
 }
 
 getapi(api_url);
-
-
-//     let tab = 
-//         `<tr>
-//           <th>Name</th>
-//           <th>Ethnicity</th>
-//           <th>State</th>
-//          </tr>`;
-    
-//     // Loop to access all rows 
-//     for (let r of data) {
-//         tab += `<tr> 
-//     <td>${r['fields']['name']} </td>
-//     <td>${r['fields']['ethnicity']}</td>    
-//     <td>${r['fields']['state']}</td>  
-// </tr>`;}
-//     document.getElementById("therapists").innerHTML = tab;
