@@ -1,7 +1,50 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<h1>My First Web Page</h1>
+
+<p id="1"></p>
+<p id="2"></p>
+<p id="3"></p>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search); // get URL params
+const email = urlParams.get('email'); // get email
+ 
+console.log(email); // log the email
+
+//query airtable for form response results based on email
+
+var Airtable = require('airtable');
+var base = new Airtable({apiKey: 'keykQb0bBMBy6ro5D'}).base('appsRjFFGSA5rwrKU');
+
+var
+
+//query airtable for therapists that match
+base('Table 1').select({
+    // Selecting the first 3 records in Grid view:
+    maxRecords: 3,
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    // This function (`page`) will get called for each page of records.
+    var name;
+    records.forEach(function(record) {
+        name = record.get('name');
+        document.getElementById("1").innerHTML = name;
+    });
+
+    // To fetch the next page of records, call `fetchNextPage`.
+    // If there are more records, `page` will get called again.
+    // If there are no more records, `done` will get called.
+    fetchNextPage();
+
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+
+
+</script>
 </body>
+
 </html>
