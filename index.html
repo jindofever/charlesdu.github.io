@@ -1,50 +1,27 @@
-<!DOCTYPE html>
+=<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
 <html>
-<body>
+    <body>
+        <h1>Therapists</h>
+        <table id="therapists"></table>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md">
+           One of three columns
+        </div>
+       
+        <div class="col-md">
+          One of three columns
+        </div>
+    
+        <div class="col-md">
+          One of three columns
+        </div>
+      </div>
+</div>
+          </body>
 
-<h1>My First Web Page</h1>
-
-<p id="1"></p>
-<p id="2"></p>
-<p id="3"></p>
-
-<script>
-const urlParams = new URLSearchParams(window.location.search); // get URL params
-const email = urlParams.get('email'); // get email
- 
-console.log(email); // log the email
-
-//query airtable for form response results based on email
-
-var Airtable = require('airtable');
-var base = new Airtable({apiKey: 'keykQb0bBMBy6ro5D'}).base('appsRjFFGSA5rwrKU');
-
-var
-
-//query airtable for therapists that match
-base('Table 1').select({
-    // Selecting the first 3 records in Grid view:
-    maxRecords: 3,
-    view: "Grid view"
-}).eachPage(function page(records, fetchNextPage) {
-    // This function (`page`) will get called for each page of records.
-    var name;
-    records.forEach(function(record) {
-        name = record.get('name');
-        document.getElementById("1").innerHTML = name;
-    });
-
-    // To fetch the next page of records, call `fetchNextPage`.
-    // If there are more records, `page` will get called again.
-    // If there are no more records, `done` will get called.
-    fetchNextPage();
-
-}, function done(err) {
-    if (err) { console.error(err); return; }
-});
-
-
-</script>
-</body>
-
-</html>
+</hmtl>
+<script src="script.js"></script>
